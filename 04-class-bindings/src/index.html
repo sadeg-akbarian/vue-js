@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task - Class Binding</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <section class="header__section">
+        <p class="header__task-name">💻 Coding Task</p>
+        <p class="header__bootcamp-info-wrapper">
+          <span class="header__bootcamp-modul"
+            ><strong>Modul:</strong> Web Apps with Vue.js - Part 1</span
+          >
+          <a
+            href="https://www.coding-bootcamps.eu/"
+            class="header__bootcamp-link"
+            >coding-bootcamps.eu</a
+          >
+        </p>
+      </section>
+    </header>
+    <main>
+      <div id="app" class="inside">
+        <nav>
+          <button
+            class="btn btn-a"
+            :class="{
+              'btn-active': aIsActive
+            }"
+            v-on:click="activeLetter = 'A', aIsActive = true, bIsActive = false, cIsActive = false"
+          >
+            A
+          </button>
+          <button
+            class="btn btn-b"
+            :class="{
+            'btn-active': bIsActive
+          }"
+            v-on:click="activeLetter = 'B', aIsActive = false, bIsActive = true, cIsActive = false"
+          >
+            B
+          </button>
+          <button
+            class="btn btn-c"
+            :class="{
+            'btn-active': cIsActive
+          }"
+            v-on:click="activeLetter = 'C', aIsActive = false, bIsActive = false, cIsActive = true"
+          >
+            C
+          </button>
+        </nav>
+        <main>
+          <div
+            class="letter letter-a"
+            :class="{
+            'letter-active': aIsActive
+          }"
+          >
+            A
+          </div>
+          <div
+            class="letter letter-b"
+            :class="{
+            'letter-active': bIsActive
+          }"
+          >
+            B
+          </div>
+          <div
+            class="letter letter-c"
+            :class="{
+            'letter-active': cIsActive
+          }"
+          >
+            C
+          </div>
+        </main>
+      </div>
+    </main>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
