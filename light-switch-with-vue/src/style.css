@@ -1,0 +1,47 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+:root {
+}
+
+html {
+  font-family: monospace;
+  direction: ltr;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: var(--page-background-color);
+  color: var(--page-text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 1s linear;
+}
+
+.bodyLightSwitch {
+  background-color: black;
+}
+
+button {
+  background-color: transparent;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border: 0.25rem solid black;
+  transition: color 1s linear, border-color 1s linear, box-shadow 1s linear;
+}
+
+.buttonLightSwitch {
+  color: white;
+  border-color: white;
+  box-shadow: 0 0 0.3rem yellow, 0 0 0.5rem yellow, 0 0 1rem yellow;
+}
+
+/* Fallbacks für manche Styles benutzen, S.13 unten */
+
+/* Füge media queries ein, S.15 unten*/
