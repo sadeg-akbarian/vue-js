@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Color Mixer" />
+    <meta name="author" content="Sadeg Akbarian" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/normalize.css@8.0.1/normalize.css"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <title>Color Mixer</title>
+  </head>
+  <body>
+    <header>
+      <form :style="{backgroundColor: headerBackground}">
+        <section class="threeColors">
+          <label for="red">r</label>
+          <input
+            type="range"
+            id="red"
+            min="0"
+            max="255"
+            class="red"
+            v-model.number="chosenRedColor"
+          />
+          <label for="green">g</label>
+          <input
+            type="range"
+            id="green"
+            min="0"
+            max="255"
+            class="green"
+            v-model.number="chosenGreenColor"
+          />
+          <label for="blue">b</label>
+          <input
+            type="range"
+            id="blue"
+            min="0"
+            max="255"
+            class="blue"
+            v-model.number="chosenBlueColor"
+          />
+        </section>
+        <section class="hexadecimal">
+          <p>{{currentColor}}</p>
+        </section>
+      </form>
+      <template>{{mainBackground()}}</template>
+    </header>
+    <main></main>
+    <script src="https://unpkg.com/vue@3.4.5/dist/vue.global.js"></script>
+    <script src="script.js" type="module"></script>
+  </body>
+</html>

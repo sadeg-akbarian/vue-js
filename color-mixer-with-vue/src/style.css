@@ -1,0 +1,52 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+:root {
+}
+
+html {
+  font-family: monospace;
+  direction: ltr;
+  font-size: 20px;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: var(--page-background-color);
+  color: var(--page-text-color);
+}
+
+/*................................................................................... all header styles............*/
+
+header {
+  height: 10%;
+}
+
+form {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+section {
+  margin-inline: 0.75rem;
+}
+
+.red {
+  accent-color: red;
+}
+
+.green {
+  accent-color: green;
+}
+
+/*.............................................................................. all main styles ..............*/
+
+main {
+  height: 90%;
+}
