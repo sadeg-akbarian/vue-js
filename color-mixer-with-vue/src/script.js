@@ -1,9 +1,9 @@
 Vue.createApp({
   data() {
     return {
-      chosenRedColor: 255,
-      chosenGreenColor: 105,
-      chosenBlueColor: 180,
+      chosenRedColor: "",
+      chosenGreenColor: "",
+      chosenBlueColor: "",
     };
   },
   computed: {
@@ -47,5 +47,12 @@ Vue.createApp({
         return hex;
       }
     },
+  },
+  async created() {
+    const response = await fetch("https://dummy-apis.netlify.app/api/color");
+    const result = await response.json();
+    this.chosenRedColor = result.rgb.r;
+    this.chosenGreenColor = result.rgb.g;
+    this.chosenBlueColor = result.rgb.b;
   },
 }).mount("header");
