@@ -12,8 +12,6 @@ export async function doTheUpdate(changedToDo, urlOfChanged) {
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 export function removeDoneToDos(localToDoList, urlOfToDoListServer) {
   const toDoListWithoutDoneToDos = [];
   for (let toDo of localToDoList) {
