@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Todo App" />
+    <meta name="author" content="Sadeg Akbarian" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/normalize.css@8.0.1/normalize.css"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <title>Todo App</title>
+  </head>
+  <body>
+    <header><h1>Todo App</h1></header>
+    <main>
+      <form>
+        <div class="inputContainer">
+          <input
+            type="text"
+            class="inputTodo"
+            placeholder="Type in min. 5 characters"
+            autocomplete="on"
+            v-model.trim="suggestedNewToDo"
+            @keypress.enter.prevent="suggestANewToDo()"
+            @click="toDoAlreadyExists = 'none'"
+            @input="toDoAlreadyExists = 'none'"
+          />
+          <div class="popup" :style="{display: toDoAlreadyExists}">
+            Dieser Eintrag existiert bereits!
+          </div>
+          <div
+            class="smallTriangle"
+            :style="{display: toDoAlreadyExists}"
+          ></div>
+          <!--  -->
+          <button
+            type="button"
+            class="addTodoButton"
+            @click.prevent="suggestANewToDo()"
+          >
+            Add
+          </button>
+        </div>
+        <h2>Filter & Options</h2>
+        <div class="radio-container">
+          <input
+            type="radio"
+            name="radioButtons"
+            class="radio"
+            id="allButton"
+            @change="activeRadioButton = $event.target.id"
+            checked
+          />
+          <label for="allButton">All</label>
+        </div>
+        <div class="radio-container">
+          <input
+            type="radio"
+            name="radioButtons"
+            class="radio"
+            id="openButton"
+            @change="activeRadioButton = $event.target.id"
+          />
+          <label for="openButton">Open</label>
+        </div>
+        <div class="radio-container">
+          <input
+            type="radio"
+            name="radioButtons"
+            class="radio"
+            id="doneButton"
+            @change="activeRadioButton = $event.target.id"
+          />
+          <label for="doneButton">Done</label>
+        </div>
+        <!-- Ich muss folgendes template benutzen, da sonst aus nicht erklärlichen Gründen
+             die data-Property 'activeRadioButton' beim Klicken der Filter-Buttons nicht aktualisiert wird. -->
+        <template>{{activeRadioButton}}</template>
+        <button
+          type="button"
+          class="removeTodos"
+          @click="newToDoListClearOfDones()"
+        >
+          Remove done Todos</button
+        ><br />
+        <h2>Your Todos</h2>
+        <ul>
+          <template v-for="toDo in toDoList" :key="toDo.id">
+            <li v-if="shouldLiBeDisplayed(toDo)" :id="toDo.id">
+              <input
+                type="checkbox"
+                :class="{'checkedInput': toDo.done}"
+                :checked="toDo.done"
+                @change="updateToDoInServer(toDo)"
+              />
+              <p v-text="toDo.description" :class="{'toDoDone': toDo.done}"></p>
+            </li>
+          </template>
+        </ul>
+      </form>
+    </main>
+    <script src="https://unpkg.com/vue@3.4.5/dist/vue.global.js"></script>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
