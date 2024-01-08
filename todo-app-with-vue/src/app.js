@@ -12,7 +12,6 @@ Vue.createApp({
       toDoAlreadyExists: "none",
     };
   },
-  computed: {},
   methods: {
     updateToDoInServer(updatedToDo) {
       // doTheUpdate kommt von der Datei ./lib.js
@@ -53,12 +52,15 @@ Vue.createApp({
         }
       }
     },
+    async getToDoListFromServer() {
+      const response = await fetch(this.fetchUrl);
+      if (response.ok) {
+        const result = await response.json();
+        this.toDoList = result;
+      }
+    },
   },
-  async created() {
-    const response = await fetch(this.fetchUrl);
-    if (response.ok) {
-      const result = await response.json();
-      this.toDoList = result;
-    }
+  created() {
+    this.getToDoListFromServer();
   },
 }).mount("main");
