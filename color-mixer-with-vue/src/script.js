@@ -47,12 +47,21 @@ Vue.createApp({
         return hex;
       }
     },
+    async getNewColor() {
+      try {
+        const response = await fetch(
+          "https://dummy-apis.netlify.app/api/color"
+        );
+        const result = await response.json();
+        this.chosenRedColor = result.rgb.r;
+        this.chosenGreenColor = result.rgb.g;
+        this.chosenBlueColor = result.rgb.b;
+      } catch (xxx) {
+        alert("That didn't work!");
+      }
+    },
   },
-  async created() {
-    const response = await fetch("https://dummy-apis.netlify.app/api/color");
-    const result = await response.json();
-    this.chosenRedColor = result.rgb.r;
-    this.chosenGreenColor = result.rgb.g;
-    this.chosenBlueColor = result.rgb.b;
+  created() {
+    this.getNewColor();
   },
 }).mount("header");
